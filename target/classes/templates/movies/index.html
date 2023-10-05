@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>DailyMovies</title>
+</head>
+
+<body style="background-color: whitesmoke;"></body>
+
+<nav style="background-color: #2dd4bf;">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Daily Movies</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li class="active"><a href="/movies">Concluidos</a></li>
+                <li><a href="#">Pendentes</a></li>
+                <li><a href="#">Usuários</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="card-panel teal accent-3" th:if="${success}" th:text="${success}"></div>
+        <div class="card-panel red accent-3 white-text" th:if="${error}" th:text="${error}"></div>
+
+        <h2 style="color: rgba(0, 0, 0, 0.63)">Filmes Assistidos</h2>
+
+        <div class="row">
+
+            <div th:each="movies : ${movie}" class="col s12 m6 l4"> 
+                <div class="card" style="border-style:whitesmoke solid; background-color: rgb(255, 255, 255);">
+                    <div class="card-content">
+                        <div class="progress">
+                            <div class="determinate" th:style="${'width:' + movies.status + '%' }"></div>
+                        </div>
+                        <span th:text="${movies.title}" class="card-title"></span>
+                        <p th:text="${movies.description}"></p>
+                        <span th:text="${movies.score}" data-badge-caption="/10" class="badge red white-text"></span>
+                    </div>
+                    <div class="card-action">
+                        <a th:href="${'/movies/delete/' + movies.id}" class="waves-effect waves-light btn #2dd4bf">
+                            <i class="material-icons">delete</i>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
