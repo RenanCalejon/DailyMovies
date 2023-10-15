@@ -4,6 +4,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.validation.Valid;
+
 @Service
 public class MovieService {
 
@@ -22,4 +24,7 @@ public class MovieService {
         return true;
     }
     
+    public void save(@Valid Movie movie) {
+        repository.save(movie);
+    }
 }

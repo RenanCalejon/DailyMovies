@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <title>DailyMovies</title>
 </head>
 
@@ -18,6 +19,13 @@
                 <li class="active"><a href="/movies">Concluidos</a></li>
                 <li><a href="#">Pendentes</a></li>
                 <li><a href="#">Usuários</a></li>
+                <li>
+                    <span th:text="${username}"></span>
+                    <img th:src="${avatar_url}" class="avatar" alt="foto do usuário" />
+                    <a href="/logout" class="btn" title="sair">
+                        <i class="material-icons">logout</i>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -55,6 +63,12 @@
 
     </div>
 
+    
+    <div class="fixed-action-btn">
+        <a href="/movies/new" class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
 
 </body>
 
